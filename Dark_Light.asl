@@ -87,31 +87,19 @@ update {
 }
 
 start {
-    if (settings["sr"] && vars.watchers["restartTriggered"].Old && !vars.watchers["restartTriggered"].Current
-     || settings["sm"] && vars.watchers["isFromMainMenu"].Old   && !vars.watchers["isFromMainMenu"].Current
-       ) {
-        return true;
-    }
+    return settings["sr"] && vars.watchers["restartTriggered"].Old && !vars.watchers["restartTriggered"].Current
+        || settings["sm"] && vars.watchers["isFromMainMenu"].Old   && !vars.watchers["isFromMainMenu"].Current;
 }
 
 split {
-    if (vars.watchers["triggered"].Current && !vars.watchers["triggered"].Old) {
-        return true;
-    }
+    return vars.watchers["triggered"].Current && !vars.watchers["triggered"].Old;
 }
 
 reset {
-    if (settings["rr"] && vars.watchers["restartTriggered"].Current && !vars.watchers["restartTriggered"].Old
-     || settings["rm"] && vars.watchers["menuTriggered"].Current    && !vars.watchers["menuTriggered"].Old
-       ) {
-        return true;
-    }
+    return settings["rr"] && vars.watchers["restartTriggered"].Current && !vars.watchers["restartTriggered"].Old
+        || settings["rm"] && vars.watchers["menuTriggered"].Current    && !vars.watchers["menuTriggered"].Old;
 }
 
 isLoading {
-    if (vars.watchers["triggered"].Current && vars.watchers["triggered"].Old) {
-        return true;
-    } else {
-        return false;
-    }
+    return vars.watchers["triggered"].Current && vars.watchers["triggered"].Old;
 }
